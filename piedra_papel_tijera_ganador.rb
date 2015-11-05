@@ -1,15 +1,18 @@
 
 def jugar(piedra, papel, tijera, valor, empate) 
-	random=Random.new
-	while empate
-		eleccion=gets.chomp
+		random=Random.new
+		while empate
+			eleccion=gets.chomp
 
-	cpu = random.rand(3)
+		cpu = random.rand(3)
 
-	valor=asignarValor(eleccion, piedra, papel, tijera)
+		valor=asignarValor(eleccion, piedra, papel, tijera)
 
-	empate=quienGana? 
+		empate=quienGana?(valor, cpu, piedra, papel, tijera) 
+	end
+end
 
+def quienGana?(valor, cpu, piedra, papel, tijera)
 	if == valor cpu 
 		puts "Ha ocurrido un empate, juega de nuevo"
 	elsif (valor == piedra && cpu == papel) || (valor == tijera && cpu == piedra) || (valor == papel && cpu == tijera) 
@@ -18,8 +21,8 @@ def jugar(piedra, papel, tijera, valor, empate)
 	else
 		puts "ganaste!"
 		empate=false
-		end
 	end
+	return empate
 end
 
 def asignarValor(eleccion, piedra, papel, tijera)
@@ -38,3 +41,4 @@ tijera=2
 valor=-1
 
 empate=true
+
